@@ -42,7 +42,7 @@ const TopNav = () => {
           <p style={{ color: 'var(--breadcrumb-separator)' }}>/</p>
           <p
             style={{ color: 'var(--breadcrumb-active)' }}
-            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] py-1 px-1.5 rounded-md font-normal text-sm'
+            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] py-1 px-1.5 rounded-md font-normal text-sm capitalize'
           >
             {
               value ? <Link to="/">{value}</Link> : 'Default'
