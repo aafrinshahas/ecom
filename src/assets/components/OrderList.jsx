@@ -56,7 +56,7 @@ const OrderList = () => {
           className={`w-7 h-7 rounded-lg text-sm ${
             currentPage === i
               ? "bg-[#1C1C1C0D] text-[#1C1C1C] dark:bg-[#FFFFFF1A] dark:text-[#FFFFFF]"
-              : "bg-transparent text-[#1C1C1C] dark:text-white"
+              : "bg-transparent text-[#1C1C1C] dark:text-white cursor-pointer"
           }`}
         >
           {i}
@@ -174,11 +174,11 @@ const OrderList = () => {
      </div>
       {/* Pagination */}
       {filteredOrders.length > itemsPerPage && (
-        <div className="flex justify-end items-center mt-6 gap-1">
+        <div className="flex justify-end items-center mt-6 gap-1 ">
           <button
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className="w-7 h-7"
+            className="w-7 h-7 cursor-pointer"
           >
             <img src={icons.arrowleft[theme]} />
           </button>
@@ -188,7 +188,7 @@ const OrderList = () => {
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            className="w-7 h-7"
+            className="w-7 h-7 cursor-pointer"
           >
             <img src={icons.arrowRight[theme]} />
           </button>
