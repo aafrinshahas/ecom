@@ -5,6 +5,7 @@ import OrderList from "../components/OrderList";
 const Dashboard = () => {
     return(
         <div>
+            
 <Outlet/>
 
         </div>

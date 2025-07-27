@@ -4,6 +4,14 @@ A responsive dashboard application built using **Vite**, **React**, and **Tailwi
 
 ## Getting Started
 
+## Access the project
+
+Pull or download the project from Git
+
+npm install
+
+npm run dev
+
 ## Project Setup
 
 1. Create the project using Vite with React and JavaScript:
