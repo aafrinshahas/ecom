@@ -2,7 +2,6 @@
 
 
 import { Route, Routes } from 'react-router-dom';
-import './app.css';
 import HomePage from "./assets/components/Homepage";
 import DashboardContextProvider from "./assets/context/DashboardContextProvider";
 import Ecomm from './assets/components/Ecomm';

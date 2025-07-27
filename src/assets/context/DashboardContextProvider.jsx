@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 import { icons } from "../utilis/icons";
 import { useTheme } from "../context/ThemeContext";
 import { images } from "../utilis/images";
-import { List } from 'lucide-react';
 const Dashboardcontext = createContext()
 
 const DashboardContextProvider = (data) => {
