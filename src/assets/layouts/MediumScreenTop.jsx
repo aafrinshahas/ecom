@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const MediumScreenTop = ({ toggleSidebar }) => {
     const { theme, toggleTheme } = useTheme();
     return(
-        <div className="hidden max-[1023px]:block sticky top-0 bg-[#FFFFFF] dark:bg-[#000] shadow-md">
+        <div className="hidden max-[1023px]:block sticky top-0 bg-[#FFFFFF] dark:bg-[#000] shadow-md z-50">
          <div className='flex items-center justify-between py-5 px-7 border-b border-b-[#1C1C1C1A] dark:border-b-[#FFFFFF1A]'>
   <div className='flex gap-2 items-center'>
           <p
