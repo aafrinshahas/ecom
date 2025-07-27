@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const TopNav = () => {
   const { theme, toggleTheme } = useTheme();
-  const { search } = useLocation();
+
  const location = useLocation();
   const pathname = location.pathname;
   console.log(pathname)
@@ -45,7 +45,7 @@ const TopNav = () => {
             className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] py-1 px-1.5 rounded-md font-normal text-sm capitalize'
           >
             {
-              value ? <Link to="/">{value}</Link> : 'Default'
+              value ? <Link to={`/${value}`}>{value}</Link> : 'Default'
             }
             
             

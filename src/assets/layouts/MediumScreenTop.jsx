@@ -1,8 +1,14 @@
 import { icons } from '../utilis/icons';
 import { useTheme } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 const MediumScreenTop = ({ toggleSidebar }) => {
     const { theme, toggleTheme } = useTheme();
+     const location = useLocation();
+  const pathname = location.pathname;
+  console.log(pathname)
+  const pathSegments = pathname.split('/').filter(Boolean); // ["order"]
+  const value = pathSegments[pathSegments.length - 1];
     return(
         <div className="hidden max-[1023px]:block sticky top-0 bg-[#FFFFFF] dark:bg-[#000] shadow-md z-50">
          <div className='flex items-center justify-between py-5 px-7 border-b border-b-[#1C1C1C1A] dark:border-b-[#FFFFFF1A]'>
@@ -17,9 +23,11 @@ const MediumScreenTop = ({ toggleSidebar }) => {
           <p style={{ color: 'var(--breadcrumb-separator)' }}>/</p>
           <p
             style={{ color: 'var(--breadcrumb-active)' }}
-            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] py-1 px-1.5 rounded-md font-normal text-sm'
+            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] py-1 px-1.5 rounded-md font-normal text-sm capitalize'
           >
-            <Link to="/">Default</Link>
+               {
+              value ? <Link to={`/${value}`}>{value}</Link> : 'Default'
+            }
             
           </p>
         </div>
