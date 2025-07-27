@@ -105,7 +105,7 @@ const OrderList = () => {
                     className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm 
                       flex items-center justify-center invisible group-hover:visible transition-opacity duration-200
                       peer-checked:visible peer-checked:bg-[#1C1C1C] peer-checked:dark:bg-[#C6C7F8] peer-checked:border-none
-                      peer-checked:after:content-['✓'] peer-checked:after:text-[10px] peer-checked:after:text-black peer-checked:after:dark:text-black"
+                      peer-checked:after:content-['✓'] peer-checked:after:text-[10px] peer-checked:after:text-white dark:peer-checked:after:text-black"
                   ></div>
                 </label>
               </td>
