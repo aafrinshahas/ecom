@@ -22,12 +22,12 @@ const TopNav = () => {
           <img
             src={icons.leftSide[theme]}
             alt='Left side bar'
-            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] p-1 rounded-md w-[20] h-[20] cursor-pointer'
+            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] p-1 rounded-md w-[28] h-[28] cursor-pointer'
           />
           <img
             src={icons.star[theme]}
             alt='Star'
-            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] p-1 rounded-md w-[20] h-[20] cursor-pointer'
+            className='hover:bg-[#1C1C1C0D] dark:hover:bg-[#FFFFFF1A] p-1 rounded-md w-[28] h-[28] cursor-pointer'
           />
         </div>
 
