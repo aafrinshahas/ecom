@@ -29,8 +29,8 @@ const HomePage = () => {
 
       {/* Medium Screen Sidebar (toggle controlled) */}
       {sidebarOpen && (
-        <div className="min-[840px]:block max-[1023px]:block hidden fixed w-18 top-0 bottom-0 overflow-y-auto shadow-xl z-50"
-        style={{height: '100dvh'}}
+        <div className="min-[840px]:block max-[1023px]:block hidden fixed w-18 top-0 bottom-0 overflow-y-auto shadow-xl z-50 h-screen"
+      
         >
           <MediumScreenLeft />
         </div>
