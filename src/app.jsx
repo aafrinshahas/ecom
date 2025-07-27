@@ -5,9 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import './app.css';
 import HomePage from "./assets/components/Homepage";
 import DashboardContextProvider from "./assets/context/DashboardContextProvider";
-import CenterPanel from './assets/layouts/Dashboard';
 import Ecomm from './assets/components/Ecomm';
-import OrderList from './assets/components/OrderList';
 import Dashboard from './assets/layouts/Dashboard';
 import Order from './assets/layouts/Order';
 
