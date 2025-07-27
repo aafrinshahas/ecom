@@ -14,16 +14,14 @@ function App() {
     <div>
       <DashboardContextProvider>
       
-  <Routes>
-  <Route path="/" element={<HomePage />}>      
-  <Route element={<Dashboard />}>  
-    <Route path='default' element={<Ecomm />} />
-    <Route path='ecommerce' element={<Ecomm />} />
-      <Route path='/' element={<Ecomm />} />
-        <Route path='order' element={<Order/>} />
+<Routes>
+  <Route path="/" element={<HomePage />}>
+    <Route index element={<Ecomm />} />
+    <Route path="default" element={<Ecomm />} />
+    <Route path="ecommerce" element={<Ecomm />} />
+    <Route path="order" element={<Order />} />
   </Route>
-</Route>
-  </Routes>
+</Routes>
       </DashboardContextProvider>
     </div>
   )
