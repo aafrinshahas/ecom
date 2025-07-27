@@ -8,24 +8,32 @@ const { theme } = useTheme();
 
 return (
 
-<div className="bg-[#F7F9FB] p-4 flex flex-col justify-between dark:bg-[#000] h-full">
+<div className="bg-[#F7F9FB] p-4 flex items-center flex-col justify-between dark:bg-[#000]">
 <div>
 <div className="my-4">
 <img src={icons.search[theme]} alt="Default icon" width={20} height={20} />
 </div>
 <div className="my-4">
-<Link to='/order'><img src={icons.default[theme]} alt="Default icon" width={20} height={20} /></Link>
+<Link to='/default'><img src={icons.default[theme]} alt="Default icon" width={20} height={20} /></Link>
 
 </div>
 <div className="my-4">
-<Link to='/'><img src={icons.ecomm[theme]} alt="Ecomm" width={20} height={20} /></Link>
+<Link to='/ecommerce'><img src={icons.ecomm[theme]} alt="Ecomm" width={20} height={20} /></Link>
 
 </div>
 <div className="my-4">
-<img src={icons.project[theme]} alt="project" width={20} height={20} />
+    <Link to='/'><img src={icons.project[theme]} alt="project" width={20} height={20} /></Link>
+
 </div>
 <div className="my-4">
-<img src={icons.course[theme]} alt="course" width={20} height={20} />
+      <Link to='/'><img src={icons.course[theme]} alt="course" width={20} height={20} /></Link>
+
+</div>
+<div className="my-4">
+    <Link to='/order'>
+    <img src={icons.clipboard[theme]} alt="course" width={20} height={20} />
+    </Link>
+
 </div>
 <div className="my-4">
 <img src={icons.profile[theme]} alt="profile" width={20} height={20} />

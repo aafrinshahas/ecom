@@ -78,17 +78,19 @@ const OrderList = () => {
       />
 
       {/* Table */}
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse ">
         <thead className="border-b border-b-[#1C1C1C33] dark:border-b-[#FFFFFF33]">
           <tr>
-            <th className="w-[24px] py-3 px-1"></th>
-            <th className="w-[100px] py-3 px-2 text-xs text-left">Order ID</th>
-            <th className="w-[214px] py-3 px-2 text-xs text-left">User</th>
-            <th className="w-[215px] py-3 px-2 text-xs text-left">Project</th>
-            <th className="w-[270px] py-3 px-2 text-xs text-left">Address</th>
-            <th className="w-[191px] py-3 px-2 text-xs text-left">Date</th>
-            <th className="w-[110px] py-3 px-2 text-xs text-left">Status</th>
-            <th className="w-[48px] py-3 px-2 text-xs text-left"></th>
+            <th className="w-[5%] py-3 px-1">
+              <div className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm"></div>
+            </th>
+            <th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Order ID</th>
+            <th className="w-[17%] py-3 px-2 lg:text-xs text-[10px] text-left">User</th>
+            <th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Project</th>
+            <th className="w-[18%] py-3 px-2 lg:text-xs text-[10px] text-left">Address</th>
+            <th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Date</th>
+            <th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Status</th>
+            <th className="w-[5%] py-3 px-2 lg:text-xs text-[10px] text-left"></th>
           </tr>
         </thead>
 
@@ -110,39 +112,40 @@ const OrderList = () => {
                 </label>
               </td>
 
-              <td className="py-3 px-2 text-xs text-left">{order.orderId}</td>
+              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">{order.orderId}</td>
 
-              <td className="py-3 px-2 text-xs text-left">
+              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
                 <div className="flex items-center gap-2">
                   <img
                     src={order.userProfile}
                     alt="user"
-                    className="w-6 h-6 rounded-full object-cover"
+                    className="lg:w-6 lg:h-6 rounded-full object-cover w-4 h-4 hidden min-[580px]:block"
                   />
-                  {order.user}
+                  <div >{order.user}</div>
+                  
                 </div>
               </td>
 
-              <td className="py-3 px-2 text-xs text-left">{order.project}</td>
+              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">{order.project}</td>
 
-              <td className="py-3 px-2 text-xs text-left">
+              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
                 <div className="flex items-center gap-1.5">
                   {order.address}
                   <button className="w-4 h-4 invisible group-hover:visible transition-opacity duration-200">
-                    <img src={icons.clipboard[theme]} className="w-full h-full" />
+                    <img src={icons.clipboard[theme]} className="w-3 h-3 md:w-4 md:h-4" />
                   </button>
                 </div>
               </td>
 
-              <td className="py-3 px-2 text-xs text-left">
+              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
                 <div className="flex items-center gap-1.5">
-                  <img src={icons.date[theme]} />
+                  <img src={icons.date[theme]} className="w-3 h-3 md:w-4 md:h-4 hidden min-[580px]:block"/>
                   {order.date}
                 </div>
               </td>
 
               <td
-                className="py-3 px-2 text-xs text-left"
+                className="py-3 px-2 lg:text-xs text-[10px] text-left"
                 style={{
                   color:
                     theme === "dark" ? order.statusColorDark : order.statusColor,
@@ -174,7 +177,7 @@ const OrderList = () => {
      </div>
       {/* Pagination */}
       {filteredOrders.length > itemsPerPage && (
-        <div className="flex justify-end items-center mt-6 gap-1 ">
+        <div className="flex justify-end items-center mt-6 gap-1 mb-6">
           <button
             onClick={handlePrev}
             disabled={currentPage === 1}
