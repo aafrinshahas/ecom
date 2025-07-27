@@ -8,64 +8,64 @@ const { theme } = useTheme();
 
 return (
 
-<div className="bg-[#F7F9FB] p-4 flex items-center flex-col justify-between dark:bg-[#000]">
+<div className="bg-[#F7F9FB] flex items-center flex-col dark:bg-[#000] h-full">
 <div>
 <div className="my-4">
-<img src={icons.search[theme]} alt="Default icon" width={20} height={20} />
+<img src={icons.search[theme]} alt="Default icon" width={18} height={18} />
 </div>
 <div className="my-4">
-<Link to='/default'><img src={icons.default[theme]} alt="Default icon" width={20} height={20} /></Link>
+<Link to='/default'><img src={icons.default[theme]} alt="Default icon" width={18} height={18} /></Link>
 
 </div>
 <div className="my-4">
-<Link to='/ecommerce'><img src={icons.ecomm[theme]} alt="Ecomm" width={20} height={20} /></Link>
+<Link to='/ecommerce'><img src={icons.ecomm[theme]} alt="Ecomm" width={18} height={18} /></Link>
 
 </div>
 <div className="my-4">
-    <Link to='/'><img src={icons.project[theme]} alt="project" width={20} height={20} /></Link>
+    <Link to='/'><img src={icons.project[theme]} alt="project" width={18} height={18} /></Link>
 
 </div>
 <div className="my-4">
-      <Link to='/'><img src={icons.course[theme]} alt="course" width={20} height={20} /></Link>
+      <Link to='/'><img src={icons.course[theme]} alt="course" width={18} height={18} /></Link>
 
 </div>
 <div className="my-4">
     <Link to='/order'>
-    <img src={icons.clipboard[theme]} alt="course" width={20} height={20} />
+    <img src={icons.clipboard[theme]} alt="course" width={18} height={18} />
     </Link>
 
 </div>
 <div className="my-4">
-<img src={icons.profile[theme]} alt="profile" width={20} height={20} />
+<img src={icons.profile[theme]} alt="profile" width={18} height={18} />
 </div>
 <div className="my-4">
-<img src={icons.account[theme]} alt="account" width={20} height={20} />
+<img src={icons.account[theme]} alt="account" width={18} height={18} />
 </div>
 <div className="my-4">
-<img src={icons.corporate[theme]} alt="corporate" width={20} height={20} />
+<img src={icons.corporate[theme]} alt="corporate" width={18} height={18} />
 </div>
 <div className="my-4">
-<img src={icons.blog[theme]} alt="blog" width={20} height={20} />
+<img src={icons.blog[theme]} alt="blog" width={18} height={18} />
 </div>
 <div className="my-4">
-<img src={icons.social[theme]} alt="social" width={20} height={20} />
+<img src={icons.social[theme]} alt="social" width={18} height={18} />
 </div>
 <div>
       <div className="my-4">
-<img src={icons.star[theme]} alt="star" width={20} height={20} />
+<img src={icons.star[theme]} alt="star" width={18} height={18} />
 </div>
 
     <div className="my-4">
-<img src={icons.clockwise[theme]} alt="clockwise" width={20} height={20} />
+<img src={icons.clockwise[theme]} alt="clockwise" width={18} height={18} />
 </div>
 
           <div className="my-4">
-<img src={icons.notification[theme]} alt="clockwise" width={20} height={20} />
+<img src={icons.notification[theme]} alt="clockwise" width={18} height={18} />
 </div>
 </div>
 </div>
-<div className="my-4">
-<img src={images.profile} alt="social" width={20} height={20} />
+<div className="mt-4">
+<img src={images.profile} alt="social" width={18} height={18} />
 </div>
 </div>
 
