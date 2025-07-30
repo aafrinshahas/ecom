@@ -32,6 +32,7 @@ const ProjectionChart = () => {
         label: 'Actual',
         data: [18, 20, 19, 22, 14, 19],
         backgroundColor: isDark ? '#A8C5DA': '#A8C5DA',
+         hoverBackgroundColor: '#A8C5DA', // slightly darker on hover
        barThickness: 20,
         borderRadius: 4,
         stack: 'Stack 0'
@@ -39,7 +40,8 @@ const ProjectionChart = () => {
       {
         label: 'Projection',
         data: [5, 7, 6, 6, 5, 6],
-        backgroundColor: isDark ? '#677680':'#E5ECF6',
+        backgroundColor: isDark ? '#677680':'#E5ECF6', //bg - color
+        hoverBackgroundColor: isDark ? '#333F46' : '#677680', // subtle hover
         barThickness: 20,
         borderRadius: 4,
         stack: 'Stack 0'
@@ -49,16 +51,45 @@ const ProjectionChart = () => {
 
   const options = {
   responsive: true,
-  plugins: {
-    tooltip: {
-      enabled: false
-    },
-    legend: {
-      display: false
+  maintainAspectRatio: false, // Important for responsive height
+    animation: {
+    duration: 800,
+    easing: 'easeOutQuart'
+  },
+    onHover: (event, chartElement) => {
+    const target = event.native?.target;
+    if (target) {
+      target.style.cursor = chartElement.length ? 'pointer' : 'default';
     }
   },
+plugins: {
+      tooltip: {
+        enabled: true,
+        backgroundColor: isDark ? '#000000' : '#FFFFFF',
+        titleColor: isDark ? '#FFFFFF' : '#1C1C1C', //jan, feb like that
+        bodyColor: isDark ? '#A8C5DA' : '#1C1C1C66', // text color
+        callbacks: {
+          label: function (context) {
+            const label = context.dataset.label || '';
+            const value = context.raw;
+            return `${label}: ${value}M`;
+          }
+        },
+          animation: {
+    duration: 300
+  },
+        padding: 10,
+        cornerRadius: 4
+      },
+      legend: {
+        display: false
+      }
+    },
+    hover: {
+      mode: 'index'
+    },
   hover: {
-    mode: null
+    mode: 'index'
   },
   scales: {
     x: {
@@ -117,9 +148,9 @@ y: {
 };
 
   return (
-    <div className='w-full'>
-      <Bar data={data} options={options} />
-    </div>
+  <div className="w-full h-full relative ">
+    <Bar key={theme} data={data} options={options} />
+  </div>
   );
 };
 

@@ -13,34 +13,29 @@ eCommerce
 </h2>
 
 {/* Top Row: Cards and Bar Chart */}
-<div className="flex flex-col lg:flex-row justify-between flex-wrap gap-4">
-<div className="w-full lg:w-[48%] mb-6">
-<Cards />
-</div>
-<div className="w-full lg:w-[48%] lg:h-[250px] xl:h-[250px] h-full  mb-6">
-<BarChart />
-</div>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+    <Cards />
+    <BarChart/>
 </div>
 
 {/* Middle Row: Line Chart and Map */}
-<div className="flex flex-col lg:flex-row justify-between flex-wrap gap-4">
-<div className="w-full lg:w-[71%] lg:h-[318px] xl:h-[318px] h-full  mb-6">
-<LineChart />
-</div>
-<div className="w-full lg:w-[25%] lg:h-[318px] xl:h-[318px] h-full mb-6">
-<Map />
-</div>
-</div>
+ <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+    <div className="xl:col-span-2">
+ <LineChart />
+    </div>
+   
+    <Map />
+ </div>
 
 {/* Bottom Row: Product List and Pie Chart */}
-<div className="flex flex-col lg:flex-row justify-between flex-wrap gap-4">
-<div className="w-full lg:w-[71%] lg:h-[336px] xl:h-[336px] h-full mb-6">
+ <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+    <div className="xl:col-span-2">
 <ProductList />
-</div>
-<div className="w-full lg:w-[25%] mb-6">
-<PieChart />
-</div>
-</div>
+    </div>
+   
+ <PieChart />
+ </div>
+
 </div>
 );
 };

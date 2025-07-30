@@ -12,6 +12,46 @@ const [user, setUser] = useState('ByeWind');
 const [active, setActive] = useState("Default");
 
 const { theme } = useTheme();
+
+const [desktopLeftPanel, setDesktopLeftPanel] = useState(true) 
+const [desktopRightPanel, setDesktopRightPanel] = useState(true)
+const [showSearch, setShowSearch] = useState(true)
+const [menuToggle, setMenuToggle] = useState(false) //mobile menu bar toggle
+const [moreToggle, setMoreToggle] = useState(false) //mobile more menu toggle
+
+//desktop left panel
+ const handleDesktopToggleLeft = () => {
+    setDesktopLeftPanel(!desktopLeftPanel)
+  }
+//desktop right panel
+  const handleDesktopToggleRight = () => {
+    setDesktopRightPanel(!desktopRightPanel)
+  }
+//show search
+  const handleShowSearch = () => {
+    setShowSearch(!showSearch)
+  }
+
+  const handleCloseSearch = () => {
+    setShowSearch(!showSearch)
+  }
+
+const handleMenuToggle = () => {
+  setMenuToggle((prev) => !prev); // toggles open/close
+};
+const handleCloseMenu = () => {
+  setMenuToggle(false); 
+};
+
+const handleMoreToggle = () =>{
+  setMoreToggle(!moreToggle)
+}
+
+const handleCloseMore = () => {
+   setMoreToggle(!moreToggle)
+}
+
+
 //arrow
 const arrow = icons.arrow[theme];
 
@@ -254,7 +294,18 @@ const orderlist = [fristorderlist, secondorderlist, fristorderlist, secondorderl
 
 
 return(
-<Dashboardcontext.Provider value={{user, menuItems, pageMenuItems, notifications, activities, contacts, productlist, orderlist, arrow, active, setActive}}>
+<Dashboardcontext.Provider value={{user, menuItems, pageMenuItems, notifications, activities, contacts, productlist, orderlist, arrow, active, setActive, 
+  
+  
+  desktopLeftPanel, handleDesktopToggleLeft,
+  
+  desktopRightPanel, handleDesktopToggleRight,
+  
+  showSearch, handleShowSearch, handleCloseSearch,
+  
+  menuToggle, handleMenuToggle, handleCloseMenu, 
+  
+  moreToggle, handleCloseMore, handleMoreToggle}}>
 {data.children}
 </Dashboardcontext.Provider>
 )

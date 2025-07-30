@@ -7,6 +7,12 @@ const PieChart = () => {
           p-4
           w-full h-full
           dark:bg-[#FFFFFF0D]
+           dark:backdrop-blur-sm
+transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+      hover:shadow-lg hover:-translate-y-[2px] active:scale-[0.99]
+      dark:hover:shadow-[0_6px_20px_rgba(255,255,255,0.08),0_2px_10px_rgba(200,200,200,0.05)]
+     
+      group
           ">
   <h2 class="text-[#1C1C1C] text-sm font-semibold mb-3 dark:text-[#FFFFFF]">Total Sales</h2>
  

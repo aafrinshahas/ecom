@@ -68,6 +68,8 @@ npm run dev
 
 - Breadcrumbs: Active state updates based on URL pathname and if pathname no there url it set default and render homepage.
 
+- Toggle Functionality and date handling using context (DashboardContextProvider).
+
 ### Charts
 
 - Integrated Chart.js with react-chartjs-2.

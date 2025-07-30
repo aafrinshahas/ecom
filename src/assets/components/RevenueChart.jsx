@@ -73,66 +73,90 @@ const options = {
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
-    tooltip: { enabled: false },
+    tooltip: {
+      enabled: true,
+      mode: 'index',
+      intersect: false,
+      backgroundColor: isDark ? '#2D2D2D' : '#FFFFFF',
+      titleColor: isDark ? '#A8C5DA' : '#000000',
+      bodyColor: isDark ? '#FFFFFF' : '#1C1C1C',
+      borderColor: isDark ? '#A8C5DA' : '#CCCCCC',
+      borderWidth: 1,
+      titleFont: {
+        size: 12,
+        weight: '600',
+      },
+      bodyFont: {
+        size: 12,
+        weight: '400',
+      },
+      padding: 10,
+      displayColors: false,
+      callbacks: {
+        label: function (context) {
+          return `${context.dataset.label}: ${context.parsed.y}M`;
+        }
+      }
+    },
+  },
+  interaction: {
+    mode: 'index',
+    intersect: false,
   },
   scales: {
- y: {
-   beginAtZero: true,
-   max: 30,
-   ticks: {
-     stepSize: 10, // Controls tick intervals (0, 10, 20, 30)
-     callback: (value) => {
-       // Only show these specific ticks
-       if ([0, 10, 20, 30].includes(value)) {
-         return value === 0 ? '0' : `${value}M`;
-       }
-       return ''; // Hide all other values
-     },
-     font: {
-       size: 12,
-       weight: 400
-     },
-     color: isDark? '#FFFFFF66':'#1C1C1C66',
-      // padding: { right: 15 }
-      padding: 15
-      
-   },
-   grid: {
-    
-     drawTicks: false,
-     drawBorder: false,
-     color: (context) => {
-            if (context.tick.value === 0) {
-              return isDark ? '#FFFFFF1A' : '#1C1C1C33';
-            }
-            return isDark ? '#FFFFFF33' : '#1C1C1C0D';
-     },
-     lineWidth: (context) => {
-       return context.tick.value === 0 ? 2 : 1;
-     }
-   },
-   border: {
-     display: false
-   }
- },
+    y: {
+      beginAtZero: true,
+      max: 30,
+      ticks: {
+        stepSize: 10,
+        callback: (value) => {
+          if ([0, 10, 20, 30].includes(value)) {
+            return value === 0 ? '0' : `${value}M`;
+          }
+          return '';
+        },
+        font: {
+          size: 12,
+          weight: 400
+        },
+        color: isDark ? '#FFFFFF66' : '#1C1C1C66',
+        padding: 15
+      },
+      grid: {
+        drawTicks: false,
+        drawBorder: false,
+        color: (context) => {
+          if (context.tick.value === 0) {
+            return isDark ? '#FFFFFF1A' : '#1C1C1C33';
+          }
+          return isDark ? '#FFFFFF33' : '#1C1C1C0D';
+        },
+        lineWidth: (context) => {
+          return context.tick.value === 0 ? 2 : 1;
+        }
+      },
+      border: {
+        display: false
+      }
+    },
     x: {
       offset: true,
       grid: { display: false },
       ticks: {
-        color: isDark?'#FFFFFF66':'#1C1C1C66',
+        color: isDark ? '#FFFFFF66' : '#1C1C1C66',
         font: {
           size: 12,
           weight: 400,
         },
       },
     },
-    
   },
 };
+
   return (
     <div >
 
-          <div className='w-full h-[230px]'>
+          <div className='w-full h-[230px] rounded-lg hover:shadow-md transition-all duration-500 active:scale-[0.99] dark:hover:shadow-[0_2px_5px_rgba(255,255,255,0.08),0_2px_5px_rgba(200,200,200,0.05)]'>
             <Line data={data} options={options} />
           </div>
       

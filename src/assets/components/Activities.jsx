@@ -11,12 +11,12 @@ const Activities = () => {
         {activities.map((activity, index) => {
           const isLast = index === activities.length - 1;
           return (
-            <div className="flex items-start gap-2.5 relative" key={index}>
+            <div className="flex items-start gap-2.5 relative group cursor-pointer" key={index}>
               <div className="relative w-6 h-6 flex-shrink-0">
                 <img
                   src={activity.userimage}
                   alt="User"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-145 group-active:scale-145"
                 />
                 {/* Line below the image (skip for last) */}
                 {!isLast && (
@@ -25,8 +25,8 @@ const Activities = () => {
               </div>
 
               <div>
-                <p className="text-[#1C1C1C] text-sm dark:text-[#FFFFFF]">{activity.activity}</p>
-                <span className="text-[#1C1C1C66] text-xs dark:text-[#FFFFFF66]">{activity.time}</span>
+                <p className="text-[#1C1C1C] text-sm dark:text-[#FFFFFF] hover:font-semibold active:font-semibold">{activity.activity}</p>
+                <span className="text-[#1C1C1C66] text-xs dark:text-[#FFFFFF66] hover:font-semibold active:font-semibold">{activity.time}</span>
               </div>
             </div>
           );

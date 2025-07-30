@@ -2,52 +2,120 @@ import TopNav from "../layouts/TopNav";
 import LeftPanel from "../layouts/LeftPanel";
 import RightPanel from "../layouts/RightPanel";
 import { Outlet } from "react-router-dom";
-import MediumScreenLeft from "../layouts/MediumScreenLeft";
-import MediumScreenTop from "../layouts/MediumScreenTop";
-import { useState, useEffect } from "react";
+import { Dashboardcontext } from "../context/DashboardContextProvider";
+import { useContext } from "react";
+import StackTopNav from "../layouts/StackTopNav";
+
 
 const HomePage = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
- 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setSidebarOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const {desktopLeftPanel, desktopRightPanel, menuToggle, handleCloseMenu, moreToggle, handleCloseMore} = useContext(Dashboardcontext)
 
   return (
-    <div className="flex flex-col md:flex-row relative">
-      {/* Left Panel for large screens */}
-      <div className="hidden lg:block lg:w-[16%] p-4 py-5 px-4 border-r border-[#1C1C1C1A] dark:border-[#FFFFFF1A]">
-        <LeftPanel />
-      </div>
+// layouts grid
+<div
+  className={`min-h-screen relative grid transition-all duration-300 ease-in-out
+   ${
+  desktopLeftPanel && desktopRightPanel
+    ? 'lg:grid-cols-[220px_1fr_280px]'
+    : desktopLeftPanel
+    ? 'lg:grid-cols-[220px_1fr]'
+    : desktopRightPanel
+    ? 'lg:grid-cols-[1fr_280px]'
+    : 'lg:grid-cols-[1fr]'
+}
 
-      {/* Medium Screen Sidebar (toggle controlled) */}
-      {sidebarOpen && (
-        <div className="min-[840px]:block max-[1023px]:block hidden fixed w-18 top-0 bottom-0 overflow-y-auto shadow-xl z-50 h-screen"
-      
-        >
-          <MediumScreenLeft />
-        </div>
-      )}
+    lg:grid-cols-1 md:grid-cols-1 grid-cols-1 relative`}
+>
+   {/* leftside bar */}
+   {
+    desktopLeftPanel &&
+  <aside className="w-[220px] h-full p-4 py-5 px-4 border-r border-[#1C1C1C1A] dark:border-[#FFFFFF1A] lg:block hidden">
+     <LeftPanel />
+  </aside>
 
-      {/* Center Content */}
-      <div className="lg:w-[64%] md:w-[73%] w-full">
-        <TopNav />
-        <MediumScreenTop toggleSidebar={() => setSidebarOpen((prev) => !prev)} />
-        <Outlet />
-      </div>
+   }
+   {/* menu bar */}
+   {menuToggle && (
+<div
+  className="w-[240px] md:w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-screen lg:hidden block inset-0"
+>
+  <div className="overlay" onClick={handleCloseMenu}></div>
+<div className="slide-menu bg-gray-100 p-4 py-5 dark:bg-neutral-950">
+                <div className="flex justify-end w-full">
+<button
+  class={`text-lg mb-4 active:bg-[#1C1C1C0D] dark:active:bg-[#FFFFFF1A] 
+         p-1 rounded-md cursor-pointer transform transition duration-300 ease-in-out
+         active:scale-95 shadow-sm active:shadow-md-[FFFFFF66] bg-[#A8C5DA] dark:bg-[#6B9EBF]`}
+         onClick={handleCloseMenu}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+       stroke-width="1.5" stroke="currentColor" class="size-4">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  </svg>
+</button>
 
-      {/* Right Panel */}
-      <div className="lg:w-[20%] md:w-[27%] w-full py-5 px-4 border-l border-[#1C1C1C1A] dark:border-[#FFFFFF1A] hidden md:block">
-        <RightPanel />
-      </div>
     </div>
+          <LeftPanel/>
+        </div>
+</div>
+
+
+      )} 
+ 
+
+
+  {/* Main Content */}
+  <main className="min-h-screen">
+    <div className="lg:block hidden">
+<TopNav />
+    </div>
+        <div className="lg:hidden block">
+<StackTopNav/>
+    </div>
+
+<Outlet />
+  </main>
+
+  {/* Right Side bar */}
+  {
+    desktopRightPanel && 
+  <aside className="w-[240px] md:w-[280px] h-full py-5 px-4 border-l border-[#1C1C1C1A] dark:border-[#FFFFFF1A] lg:block hidden">
+  <RightPanel />
+  </aside>
+
+  }
+
+     {/* menu bar */}
+   {moreToggle && (
+<div
+  className="w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-screen lg:hidden block inset-0"
+>
+  <div className="overlay" onClick={handleCloseMore}></div>
+<div className="slide-menu bg-gray-100 p-4 py-5 dark:bg-neutral-950">
+                <div className="flex justify-end w-full">
+<button
+  class={`text-lg mb-4 active:bg-[#1C1C1C0D] dark:active:bg-[#FFFFFF1A] 
+         p-1 rounded-md cursor-pointer transform transition duration-300 ease-in-out
+         active:scale-95 shadow-sm active:shadow-md-[FFFFFF66] bg-[#A8C5DA] dark:bg-[#6B9EBF]`}
+         onClick={handleCloseMore}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+       stroke-width="1.5" stroke="currentColor" class="size-4">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  </svg>
+</button>
+
+    </div>
+        <RightPanel/>
+        </div>
+</div>
+
+
+      )} 
+
+  
+ </div>
   );
 };
 

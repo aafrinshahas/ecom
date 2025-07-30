@@ -5,200 +5,212 @@ import { icons } from "../utilis/icons";
 import OrderFunctionality from "./OrderFuctionality";
 
 const OrderList = () => {
-  const { orderlist } = useContext(Dashboardcontext);
-  const { theme } = useTheme();
+const { orderlist } = useContext(Dashboardcontext);
+const { theme } = useTheme();
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+const [searchTerm, setSearchTerm] = useState("");
+const [currentPage, setCurrentPage] = useState(1);
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to page 1 on new search
-  };
+const handleSearchChange = (e) => {
+setSearchTerm(e.target.value);
+setCurrentPage(1); // Reset to page 1 on new search
+};
 
-  const flatOrderList = orderlist.flat();
-  const filteredOrders = flatOrderList.filter((order) =>
-    order.orderId.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+const flatOrderList = orderlist.flat();
+const filteredOrders = flatOrderList.filter((order) =>
+order.orderId.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
-  const itemsPerPage = 10;
-  const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentOrders = filteredOrders.slice(startIndex, startIndex + itemsPerPage);
+const itemsPerPage = 10;
+const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const currentOrders = filteredOrders.slice(startIndex, startIndex + itemsPerPage);
 
-  const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
+const handlePrev = () => {
+if (currentPage > 1) setCurrentPage(currentPage - 1);
+};
 
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
+const handleNext = () => {
+if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+};
 
-  const handlePageClick = (page) => {
-    setCurrentPage(page);
-  };
+const handlePageClick = (page) => {
+setCurrentPage(page);
+};
 
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
-    const maxPages = 5;
-    let start = Math.max(1, currentPage - Math.floor(maxPages / 2));
-    let end = Math.min(totalPages, start + maxPages - 1);
+const renderPageNumbers = () => {
+const pageNumbers = [];
+const maxPages = 5;
+let start = Math.max(1, currentPage - Math.floor(maxPages / 2));
+let end = Math.min(totalPages, start + maxPages - 1);
 
-    if (end - start < maxPages - 1) {
-      start = Math.max(1, end - maxPages + 1);
-    }
+if (end - start < maxPages - 1) {
+start = Math.max(1, end - maxPages + 1);
+}
 
-    for (let i = start; i <= end; i++) {
-      pageNumbers.push(
-        <button
-          key={i}
-          onClick={() => handlePageClick(i)}
-          className={`w-7 h-7 rounded-lg text-sm ${
-            currentPage === i
-              ? "bg-[#1C1C1C0D] text-[#1C1C1C] dark:bg-[#FFFFFF1A] dark:text-[#FFFFFF]"
-              : "bg-transparent text-[#1C1C1C] dark:text-white cursor-pointer"
-          }`}
-        >
-          {i}
-        </button>
-      );
-    }
+for (let i = start; i <= end; i++) {
+pageNumbers.push(
+<button
+key={i}
+onClick={() => handlePageClick(i)}
+className={`w-7 h-7 cursor-pointer rounded-lg text-sm flex items-center justify-center transition-all duration-300
+${
+currentPage === i
+? "bg-[#1C1C1C0D] text-[#1C1C1C] dark:bg-[#FFFFFF1A] dark:text-white"
+: "bg-transparent text-[#1C1C1C] dark:text-white hover:bg-gray-200 dark:hover:bg-[#ffffff14] active:scale-95"
+}
+`}
+>
+{i}
+</button>
 
-    return pageNumbers;
-  };
+);
+}
 
-  return (
-    <div >
-      <div className="order-list">
+return pageNumbers;
+};
 
- 
-      <OrderFunctionality
-        searchTerm={searchTerm}
-        onSearchChange={handleSearchChange}
-      />
+return (
+<div >
+<div className="overflow-x-scroll scroll-smooth custom-scrollbar">
 
-      {/* Table */}
-      <table className="w-full border-collapse ">
-        <thead className="border-b border-b-[#1C1C1C33] dark:border-b-[#FFFFFF33]">
-          <tr>
-            <th className="w-[5%] py-3 px-1">
-              <div className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm"></div>
-            </th>
-            <th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Order ID</th>
-            <th className="w-[17%] py-3 px-2 lg:text-xs text-[10px] text-left">User</th>
-            <th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Project</th>
-            <th className="w-[18%] py-3 px-2 lg:text-xs text-[10px] text-left">Address</th>
-            <th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Date</th>
-            <th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Status</th>
-            <th className="w-[5%] py-3 px-2 lg:text-xs text-[10px] text-left"></th>
-          </tr>
-        </thead>
 
-        <tbody>
-          {currentOrders.map((order, index) => (
-            <tr
-              key={index}
-              className="group border-b border-b-[#1C1C1C0D] cursor-pointer hover:bg-[#F7F9FB] dark:hover:bg-[#FFFFFF0D] hover:border-b-0"
-            >
-              <td className="py-3 px-1 group-hover:rounded-l-xl transition-all duration-200">
-                <label className="flex items-center cursor-pointer">
-                  <input type="checkbox" className="peer hidden" />
-                  <div
-                    className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm 
-                      flex items-center justify-center visible md:invisible md:group-hover:visible transition-opacity duration-200
-                      peer-checked:visible peer-checked:bg-[#1C1C1C] peer-checked:dark:bg-[#C6C7F8] peer-checked:border-none
-                      peer-checked:after:content-['✓'] peer-checked:after:text-[10px] peer-checked:after:text-white dark:peer-checked:after:text-black"
-                  ></div>
-                </label>
-              </td>
+<OrderFunctionality
+searchTerm={searchTerm}
+onSearchChange={handleSearchChange}
+/>
 
-              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">{order.orderId}</td>
+{/* Table */}
+<table className="w-full border-collapse">
+<thead className="border-b border-b-[#1C1C1C33] dark:border-b-[#FFFFFF33]">
+<tr>
+<th className="w-[5%] py-3 px-1">
+<div className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm"></div>
+</th>
+<th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Order ID</th>
+<th className="w-[17%] py-3 px-2 lg:text-xs text-[10px] text-left">User</th>
+<th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Project</th>
+<th className="w-[18%] py-3 px-2 lg:text-xs text-[10px] text-left">Address</th>
+<th className="w-[15%] py-3 px-2 lg:text-xs text-[10px] text-left">Date</th>
+<th className="w-[10%] py-3 px-2 lg:text-xs text-[10px] text-left">Status</th>
+<th className="w-[5%] py-3 px-2 lg:text-xs text-[10px] text-left"></th>
+</tr>
+</thead>
 
-              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
-                <div className="flex items-center gap-2">
-                  <img
-                    src={order.userProfile}
-                    alt="user"
-                    className="lg:w-6 lg:h-6 rounded-full object-cover w-4 h-4 hidden min-[580px]:block"
-                  />
-                  <div >{order.user}</div>
-                  
-                </div>
-              </td>
+<tbody>
+{currentOrders.map((order, index) => (
+<tr
+key={index}
+className="group transition-all duration-500 border-b border-b-[#1C1C1C0D] cursor-pointer hover:bg-[#F7F9FB] dark:hover:bg-[#FFFFFF0D] hover:border-b-0 small-text"
+>
+<td className="py-3 px-2 group-hover:rounded-l-xl transition-all duration-200">
+<label className="flex items-center cursor-pointer">
+<input type="checkbox" className="peer hidden" />
+<div
+className="w-4 h-4 border border-[#1C1C1C33] dark:border-[#FFFFFF33] rounded-sm 
+flex items-center justify-center visible md:invisible md:group-hover:visible transition-opacity duration-200
+peer-checked:visible peer-checked:bg-[#1C1C1C] peer-checked:dark:bg-[#C6C7F8] peer-checked:border-none
+peer-checked:after:content-['✓'] peer-checked:after:text-[10px] peer-checked:after:text-white dark:peer-checked:after:text-black"
+></div>
+</label>
+</td>
 
-              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">{order.project}</td>
+<td className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left">{order.orderId}</td>
 
-              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
-                <div className="flex items-center gap-1.5">
-                  {order.address}
-                  <button className="w-4 h-4 invisible group-hover:visible transition-opacity duration-200">
-                    <img src={icons.clipboard[theme]} className="w-3 h-3 md:w-4 md:h-4" />
-                  </button>
-                </div>
-              </td>
+<td className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left">
+<div className="flex items-center gap-2">
+<img
+src={order.userProfile}
+alt="user"
+className="lg:w-6 lg:h-6 rounded-full object-cover w-4 h-4 hidden min-[580px]:block"
+/>
+<div >{order.user}</div>
 
-              <td className="py-3 px-2 lg:text-xs text-[10px] text-left">
-                <div className="flex items-center gap-1.5">
-                  <img src={icons.date[theme]} className="w-3 h-3 md:w-4 md:h-4 hidden min-[580px]:block"/>
-                  {order.date}
-                </div>
-              </td>
+</div>
+</td>
 
-              <td
-                className="py-3 px-2 lg:text-xs text-[10px] text-left"
-                style={{
-                  color:
-                    theme === "dark" ? order.statusColorDark : order.statusColor,
-                }}
-              >
-                <div className="flex items-center gap-1.5">
-                  <div
-                    style={{
-                      background:
-                        theme === "dark"
-                          ? order.statusColorDark
-                          : order.statusColor,
-                    }}
-                    className="w-1.5 h-1.5 rounded-full"
-                  ></div>
-                  {order.status}
-                </div>
-              </td>
+<td className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left">{order.project}</td>
 
-              <td className="py-3 px-2 group-hover:rounded-r-xl transition-all duration-200">
-                <button>
-                  <img src={icons.dots[theme]} alt="options" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-     </div>
-      {/* Pagination */}
-      {filteredOrders.length > itemsPerPage && (
-        <div className="flex justify-end items-center mt-6 gap-1 mb-6">
-          <button
-            onClick={handlePrev}
-            disabled={currentPage === 1}
-            className="w-7 h-7 cursor-pointer"
-          >
-            <img src={icons.arrowleft[theme]} />
-          </button>
+<td className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left">
+<div className="flex items-center gap-1.5">
+{order.address}
+<button className="w-4 h-4 invisible group-hover:visible transition-opacity duration-200">
+<img src={icons.clipboard[theme]} className="w-3 h-3 md:w-4 md:h-4" />
+</button>
+</div>
+</td>
 
-          {renderPageNumbers()}
+<td className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left">
+<div className="flex items-center gap-1.5">
+<img src={icons.date[theme]} className="w-3 h-3 md:w-4 md:h-4 hidden min-[580px]:block"/>
+{order.date}
+</div>
+</td>
 
-          <button
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            className="w-7 h-7 cursor-pointer"
-          >
-            <img src={icons.arrowRight[theme]} />
-          </button>
-        </div>
-      )}
-    </div>
-  );
+<td
+className="py-3 px-2 min-[1140px]:text-xs text-[10px] text-left"
+style={{
+color:
+theme === "dark" ? order.statusColorDark : order.statusColor,
+}}
+>
+<div className="flex items-center gap-1.5">
+<div
+style={{
+background:
+theme === "dark"
+? order.statusColorDark
+: order.statusColor,
+}}
+className="w-1.5 h-1.5 rounded-full"
+></div>
+{order.status}
+</div>
+</td>
+
+<td className="py-3 px-2 group-hover:rounded-r-xl transition-all duration-200">
+<button>
+<img src={icons.dots[theme]} alt="options" />
+</button>
+</td>
+</tr>
+))}
+</tbody>
+</table>
+</div>
+{/* Pagination */}
+{filteredOrders.length > itemsPerPage && (
+<div className="flex justify-end items-center mt-6 gap-1 mb-6">
+<button
+onClick={handlePrev}
+disabled={currentPage === 1}
+className={`w-7 h-7 flex items-center justify-center rounded transition-all duration-200
+${currentPage === 1
+? 'opacity-30 cursor-not-allowed'
+: 'hover:bg-gray-200 dark:hover:bg-[#ffffff14] active:scale-90'}
+`}
+>
+<img src={icons.arrowleft[theme]} alt="Previous" className="w-4 h-4" />
+</button>
+
+{renderPageNumbers()}
+
+<button
+onClick={handleNext}
+disabled={currentPage === totalPages}
+className={`w-7 h-7 flex items-center justify-center rounded transition-all duration-200
+${currentPage === totalPages
+? 'opacity-30 cursor-not-allowed'
+: 'hover:bg-gray-200 dark:hover:bg-[#ffffff14] active:scale-90 cursor-pointer '}
+`}
+>
+<img src={icons.arrowRight[theme]} alt="Next" className="w-4 h-4" />
+</button>
+</div>
+
+)}
+</div>
+);
 };
 
 export default OrderList;
