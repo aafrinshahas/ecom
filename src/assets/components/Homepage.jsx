@@ -38,7 +38,7 @@ const HomePage = () => {
    {/* menu bar */}
    {menuToggle && (
 <div
-  className="w-[240px] md:w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-screen lg:hidden block inset-0"
+  className="w-[240px] md:w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-full lg:hidden block inset-0"
 >
   <div className="overlay" onClick={handleCloseMenu}></div>
 <div className="slide-menu bg-gray-100 p-4 py-5 dark:bg-neutral-950">
@@ -89,7 +89,7 @@ const HomePage = () => {
      {/* menu bar */}
    {moreToggle && (
 <div
-  className="w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-screen lg:hidden block inset-0"
+  className="w-[280px] fixed top-0 bottom-0 overflow-y-auto scroll-smooth custom-scrollbar z-[999999] h-full lg:hidden block inset-0"
 >
   <div className="overlay" onClick={handleCloseMore}></div>
 <div className="slide-menu bg-gray-100 p-4 py-5 dark:bg-neutral-950">
