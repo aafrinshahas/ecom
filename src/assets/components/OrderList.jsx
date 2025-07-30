@@ -72,7 +72,7 @@ return pageNumbers;
 
 return (
 <div >
-<div className="overflow-x-scroll scroll-smooth custom-scrollbar">
+<div className="overflow-x-auto scroll-smooth custom-scrollbar">
 
 
 <OrderFunctionality

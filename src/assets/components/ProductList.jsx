@@ -10,7 +10,7 @@ const ProductList = () => {
   transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
   hover:shadow-lg hover:-translate-y-[2px] active:scale-[0.99]
   dark:hover:shadow-[0_6px_20px_rgba(255,255,255,0.08),0_2px_10px_rgba(200,200,200,0.05)]
-  group overflow-x-scroll scroll-smooth custom-scrollbar
+  group overflow-x-auto scroll-smooth custom-scrollbar
         ">
            <p className="font-semibold text-sm mb-1 dark:text-[#FFFFFF]">Top Selling Products</p>
            <div className="overflow-x-auto scroll-smooth">
